@@ -4,33 +4,34 @@ using Android.Widget;
 using Android.OS;
 using Android.Content;
 using System.Collections.Generic;
-using Android.Runtime;
+
+//https://developer.xamarin.com/recipes/android/fundamentals/
 
 namespace ContactList
 {
-    [Activity(Label = "ContactList", MainLauncher = true)]
+    [Activity(Label = "Contact List", MainLauncher = true)]
     public class MainActivity : Activity
     {
         public static List<Contact> Contacts = new List<Contact>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+            Contacts.Add(new Contact("Tom", "Bien", 67854353));
 
+            base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
-            Contacts.Add(new Contact("Tom", "Bien", 67854353));
 
             FindViewById<Button>(Resource.Id.addContact).Click += OnAddClick;
             FindViewById<Button>(Resource.Id.contactList).Click += OnContactListClick;
             FindViewById<Button>(Resource.Id.about).Click += OnAboutClick;
+            
         }
 
         void OnAddClick (object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(AddContactActivity));
-            StartActivity(intent);
+            StartActivityForResult(intent, 100);
         }
 
         void OnContactListClick(object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace ContactList
             StartActivity(intent);
         }
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             if (requestCode == 100 && resultCode == Result.Ok)
             {
@@ -58,4 +59,3 @@ namespace ContactList
         }
     }
 }
-

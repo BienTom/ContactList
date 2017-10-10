@@ -9,7 +9,7 @@
         android:text="Add Contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/addContact"/>
+        android:id="@+id/addContact" />
     <Button
         android:text="Contact List"
         android:layout_width="match_parent"

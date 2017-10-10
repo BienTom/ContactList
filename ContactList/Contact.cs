@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-namespace ContactList
+﻿namespace ContactList
 {
     public class Contact
     {
@@ -20,7 +8,7 @@ namespace ContactList
             LName = lname;
             PNumber = pnumber;
         }
-
+        
         public string FName { get; set; }
         public string LName { get; set; }
         public int PNumber { get; set; }

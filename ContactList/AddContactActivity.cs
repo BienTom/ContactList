@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 
 namespace ContactList
@@ -19,32 +14,41 @@ namespace ContactList
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AddContact);
-            // Create your application here
+            
             FindViewById<Button>(Resource.Id.saveBttn).Click += OnSaveClick;
             FindViewById<Button>(Resource.Id.cancelBttn).Click += OnCancelClick;
 
             void OnSaveClick(object sender, EventArgs e)
             {
-                string fName = FindViewById<EditText>(Resource.Id.firstNameInput).Text;
-                string lName = FindViewById<EditText>(Resource.Id.lastNameInput).Text;
-                int phoneNumber = int.Parse(FindViewById<EditText>(Resource.Id.phoneNoInput).Text);
-                //wyjątki na puste pola dopisać
+                string fname = FindViewById<EditText>(Resource.Id.firstNameInput).Text;
+                string lname = FindViewById<EditText>(Resource.Id.lastNameInput).Text;
+                int pnumber = int.Parse(FindViewById<EditText>(Resource.Id.phoneNoInput).Text);
 
                 var intent = new Intent();
 
-                intent.PutExtra("ContactFName", fName);
-                intent.PutExtra("ContactLName", lName);
-                intent.PutExtra("PhoneNumber", phoneNumber);
+                intent.PutExtra("ContactFName", fname);
+                intent.PutExtra("ContactLName", lname);
+                intent.PutExtra("PhoneNumber", pnumber);
 
                 SetResult(Result.Ok, intent);
+
                 Finish();
-            }//Wyświetlanie nie działa w liście po dodaniu obiektu, problem tutaj
+            }
 
             void OnCancelClick(object sender, EventArgs e)
             {
                 Finish();
             }
 
+            Button button = FindViewById<Button>(Resource.Id.uploadPhoto);
+
+            button.Click += delegate {
+                var imageIntent = new Intent();
+                imageIntent.SetType("image/*");
+                imageIntent.SetAction(Intent.ActionGetContent);
+                StartActivityForResult(
+                Intent.CreateChooser(imageIntent, "Select photo"), 0);
+            };
             /* Potwierdzenie CANCELa bez SAVEa
             async void OnAlertYesNoClicked(object sender, EventArgs e)
             {
