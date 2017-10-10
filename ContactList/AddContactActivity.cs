@@ -39,22 +39,6 @@ namespace ContactList
             {
                 Finish();
             }
-
-            Button button = FindViewById<Button>(Resource.Id.uploadPhoto);
-
-            button.Click += delegate {
-                var imageIntent = new Intent();
-                imageIntent.SetType("image/*");
-                imageIntent.SetAction(Intent.ActionGetContent);
-                StartActivityForResult(
-                Intent.CreateChooser(imageIntent, "Select photo"), 0);
-            };
-            /* Potwierdzenie CANCELa bez SAVEa
-            async void OnAlertYesNoClicked(object sender, EventArgs e)
-            {
-                var answer = await DisplayAlert("Cancel?", "All data will be unsaved", "Yes", "No");
-                Debug.WriteLine("Answer: " + answer);
-            } */
         }
     }
 }

@@ -24,8 +24,7 @@ namespace ContactList
 
             FindViewById<Button>(Resource.Id.addContact).Click += OnAddClick;
             FindViewById<Button>(Resource.Id.contactList).Click += OnContactListClick;
-            FindViewById<Button>(Resource.Id.about).Click += OnAboutClick;
-            
+            FindViewById<Button>(Resource.Id.about).Click += OnAboutClick;      
         }
 
         void OnAddClick (object sender, EventArgs e)

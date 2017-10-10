@@ -23,7 +23,7 @@ namespace ContactList
                 int position = e.Position; //e.Position = position in the list of contact user touched
                 var intent = new Intent(this, typeof(ContactDetailActivity));
 
-                intent.PutExtra("Item position", position);
+                intent.PutExtra("ContactPosition", position);
                 StartActivity(intent);
             }
             

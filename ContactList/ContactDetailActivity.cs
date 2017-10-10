@@ -13,7 +13,7 @@ namespace ContactList
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ContactDetail);
 
-            int position = Intent.GetIntExtra("ItemPosition",0);
+            int position = Intent.GetIntExtra("ContactPosition", -1);
 
             var item = MainActivity.Contacts[position];
 
