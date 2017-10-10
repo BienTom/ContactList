@@ -1,3 +1,3 @@
 # Contact List
 
-Contact List on Android made with Xamarin.
+Very simple contact list on made in Xamarin.Android
